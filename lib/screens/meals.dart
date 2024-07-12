@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:meals/models/meal.dart';
+import 'package:meals/widgets/meal_item.dart';
 
 class MealsScreen extends StatelessWidget {
   const MealsScreen({
@@ -40,9 +41,8 @@ class MealsScreen extends StatelessWidget {
       content = ListView.builder(
         itemCount: meals.length,
         // the ListView widget allows to manage a list in an optimal way (showing only the visible items)
-        itemBuilder: (context, index) => Text(
-            // itemBuilder is a function that returns a widget for each item in the list
-            meals[index].title),
+        itemBuilder: (context, index) => MealItem(meal: meals[index]
+        ),
       );
     }
 
