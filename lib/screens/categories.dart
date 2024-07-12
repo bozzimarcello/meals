@@ -26,13 +26,7 @@ class CategoriesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      // good stating point for app with many screens, useful to add a title and a body content
-      appBar: AppBar(
-        // app bar is a header that is displayed at the top of the screen
-        title: const Text('Pick your category'),
-      ),
-      body: GridView(
+    return GridView(
         padding: const EdgeInsets.all(25), // space around the grid
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           // layout of the grid
@@ -52,7 +46,6 @@ class CategoriesScreen extends StatelessWidget {
         ],
         // an alternative is to use the map method
         // availableCategories.map((category) => CategoryGridItem(category: category)).toList(),
-      ),
     );
   }
 }
