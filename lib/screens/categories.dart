@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:meals/widgets/category_grid_item.dart';
+
+import 'package:meals/data/dummy_data.dart';
 
 class CategoriesScreen extends StatelessWidget {
   const CategoriesScreen({super.key});
@@ -10,20 +13,19 @@ class CategoriesScreen extends StatelessWidget {
         title: const Text('Pick your category'),
       ),
       body: GridView(
+        padding: const EdgeInsets.all(25), // space around the grid
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount( // layout of the grid
           crossAxisCount: 2, // number of columns
           childAspectRatio: 3 / 2, // aspect ratio of each grid item
           crossAxisSpacing: 20, // space between columns
           mainAxisSpacing: 20, // space between rows
         ),
-        children: const [
-          Text('data 1', style: TextStyle(color: Colors.white),),
-          Text('data 2', style: TextStyle(color: Colors.white),),
-          Text('data 3', style: TextStyle(color: Colors.white),),
-          Text('data 4', style: TextStyle(color: Colors.white),),
-          Text('data 5', style: TextStyle(color: Colors.white),),
-          Text('data 6', style: TextStyle(color: Colors.white),),
+        children: [
+          for (final category in availableCategories) // loop through the available categories
+            CategoryGridItem(category: category),
         ],
+          // an alternative is to use the map method
+          // availableCategories.map((category) => CategoryGridItem(category: category)).toList(),
       ),
     );
   }
