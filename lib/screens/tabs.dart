@@ -49,10 +49,10 @@ class _TabsScreenState extends State<TabsScreen> {
     });
   }
 
-  void _setScreen(String identifier) {
+  void _setScreen(String identifier) async{
     Navigator.of(context).pop();
     if (identifier == 'filters') {
-      Navigator.of(context).push( 
+      final result = await Navigator.of(context).push<Map<Filter, bool>>( 
         // eventually pushReplacement would have replaced 
         // the current screen with the new screen, so
         // disabling the physical back button
@@ -60,6 +60,9 @@ class _TabsScreenState extends State<TabsScreen> {
           builder: (ctx) => const FiltersScreen(),
         ),
       );
+      // debug
+      print(result);
+
     }
   }
 
