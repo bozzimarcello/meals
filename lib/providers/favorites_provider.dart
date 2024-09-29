@@ -4,7 +4,7 @@ import 'package:meals/models/meal.dart';
 class FavoriteMealsNotifier extends StateNotifier<List<Meal>> {
   FavoriteMealsNotifier() : super([]);
 
-  void toggleMEalFavoriteStatus(Meal meal) {
+  bool toggleMEalFavoriteStatus(Meal meal) {
     final mealIsFavorite = state.contains(meal);
 
     // since in Providers we cannot modify the state directly,
@@ -12,10 +12,12 @@ class FavoriteMealsNotifier extends StateNotifier<List<Meal>> {
     if (mealIsFavorite) {
       // create a list without the meal that we want to remove
       state = state.where((m) => m.id != meal.id).toList();
+      return false;
     } else {
       // create a new list with the meal that we want to add
       // using the spread operator '...' to copy the existing list
       state = [...state, meal];
+      return true;
     }
   }
 }
